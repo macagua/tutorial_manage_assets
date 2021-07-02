@@ -11,6 +11,7 @@
     """,
     'version': '13.0.0.1',
     'author': 'Oocademy',
+    'support': 'info@oocademy.com',
     'website': 'https://www.oocademy.com/',
     'license': 'Other proprietary',
     'maintainer': 'Leonardo J. Caballero G. <leonardocaballero@gmail.com>',
