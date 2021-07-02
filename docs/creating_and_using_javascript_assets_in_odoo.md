@@ -107,10 +107,12 @@ system. Create a new JavaScript file in your custom module under
 ``/static/src/js`` named ``hello_world.js``. Add this code for now and
 I'll explain it afterwards:
 
+```
 odoo.define('hello_world.main', function (require) {
     const AbstractAction = require('web.AbstractAction');
     console.log(AbstractAction);
 });
+```
 
 This is how a JavaScript file can describe a module. JavaScript modules
 are defined by a name (``hello_world.main`` here), and a function. That
@@ -306,4 +308,9 @@ the ``Widget`` class to make more interactive and complex widgets.
 
 **Tip:** the next tutorial is currently still in development. It will be
 published soon!
+
+
+# References
+
+- [Creating and using JavaScript assets in Odoo 13](https://www.oocademy.com/v13.0/tutorial/creating-and-using-javascript-assets-in-odoo-54) tutorial.
 
