@@ -96,7 +96,7 @@ it applied all xpath expressions - and then looks inside the xpath which
 files need to be processed. Notice that a bundle contains JavaScript,
 CSS and SCSS files. Your code would look like this:
 
-```
+```xml
 <template id="assets_backend" name="hello_world assets" inherit_id="web.assets_backend">
     <xpath expr="." position="inside">
         <script type="text/javascript" src="/hello_world/static/src/js/hello_world.js"></script>
@@ -115,7 +115,7 @@ system. Create a new JavaScript file in your custom module under
 ``/static/src/js`` named ``hello_world.js``. Add this code for now and
 I'll explain it afterwards:
 
-```
+```javascript
 odoo.define('hello_world.main', function (require) {
     const AbstractAction = require('web.AbstractAction');
     console.log(AbstractAction);
@@ -137,7 +137,7 @@ either restart the server or update the module.
 ``dev=all`` flag or if Odoo is accessed in ``debug=assets`` mode. Refresh your
 browser. You'll now see a message in your web browser its console that looks like this:
 
-```
+```javascript
     ƒ Class(){if(this.constructor!==OdooClass){...
 ```
 
@@ -155,7 +155,7 @@ basically tiny applications that manage the main area of the screen. For
 now, we will subclass this action so it displays a message. Let's
 modify our JS code:
 
-```
+```javascript
 odoo.define('hello_world.main', function (require) {
     const AbstractAction = require('web.AbstractAction');
     const core = require('web.core');
@@ -187,7 +187,9 @@ the point of view of the web client. There is still no way to open it
 from the user interface (see next chapter), but we can already test it
 manually, by running a command in the console:
 
-``odoo.__DEBUG__.services["web.web_client"].do_action("hello_world.action")``
+```ipython
+odoo.__DEBUG__.services["web.web_client"].do_action("hello_world.action")
+```
 
 Note that working with Odoo does not require understanding or learning
 the above command! This is just a quick way to test something in the web
@@ -207,14 +209,14 @@ you don't have it yet and then create a new XML file named
 ``views.xml`` inside. In this XML file we'll create an action and a
 menuitem that calls our action. Your code should look like this:
 
-```
+```xml
 <odoo>                                
   <data>                                    
     <record id="action_hello_world" model="ir.actions.client">                                        
       <field name="name">Tutorial Demo</field>                                        
       <field name="tag">hello_world.action</field>                                    
     </record>                                    
-    <menuitem name="Hello World" id="hello_world_menu_root" action="action_hello_world">                                </menuitem>
+    <menuitem name="Hello World" id="hello_world_menu_root" action="action_hello_world"></menuitem>
   </data>                            
 </odoo>
 ```
@@ -223,7 +225,7 @@ We also have to update our ``__manifest.py__`` file so that Odoo
 knows it should load this new XML file. Open up your manifest and add
 the file in the ``data`` key:
 
-```
+```python
     'data': ['views/views.xml'],
 ```
 
@@ -247,7 +249,7 @@ Let's start by creating a new XML file. Name it ``hello_world.xml``
 and place it under ``/static/src/xml/``. Let's add a very basic XML
 template in it:
 
-```
+```xml
 <!--?xml version="1.0" encoding="UTF-8"?-->                            
 <templates xml:space="preserve">    
   <div t-name="hello_world.ClientAction" class="hello-world">      
