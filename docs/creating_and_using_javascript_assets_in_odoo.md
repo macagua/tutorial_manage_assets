@@ -1,4 +1,4 @@
-[![Oocademy](/oocademy/static/src/img/logo.png "Oocademy")
+[![Oocademy](../static/description/banner.jpg "Oocademy")
 
 Creating and using JavaScript assets in Odoo
 ============================================
@@ -121,10 +121,10 @@ Note that to prevent name clashes (module names have to be unique),
 there is a naming convention: module names should be prefixed with the
 Odoo module name. To make this code available in the web browser, we
 need to force Odoo to rebuild the asset bundles. To do that, we can
-either restart the server or update the module.\
+either restart the server or update the module.
 
 **Tip**: This may not be necessary if your server is started with the
-``dev=all`` flag or if Odoo is accessed in debug=assets mode. Refresh your
+``dev=all`` flag or if Odoo is accessed in ``debug=assets`` mode. Refresh your
 browser. You'll now see a message in your web browser its console that looks like this:
 
 ```
@@ -134,7 +134,6 @@ browser. You'll now see a message in your web browser its console that looks lik
 This is the output of logging a widget in the console. This means that
 we successfully imported a JavaScript object defined in the Odoo assets.
 
-[]{.underline}
 
 4. Making a client action
 -------------------------
@@ -196,13 +195,17 @@ you don't have it yet and then create a new XML file named
 ``views.xml`` inside. In this XML file we'll create an action and a
 menuitem that calls our action. Your code should look like this:
 
+```
 Tutorial Demo hello_world.action
+```
 
 We also have to update our ``__manifest.py__`` file so that Odoo
 knows it should load this new XML file. Open up your manifest and add
 the file in the ``data`` key:
 
+```
     'data': ['views/views.xml'],
+```
 
 Since we've modified some core files for our module we have to update
 the module again. After updating the app you'll see there is a new
@@ -224,7 +227,9 @@ Let's start by creating a new XML file. Name it ``hello_world.xml``
 and place it under ``/static/src/xml/``. Let's add a very basic XML
 template in it:
 
-                                                                                                                  Hello Odoo                                                                        
+```
+Hello Odoo
+```
 
 This code will just create an XML template which shows ``Hello Odoo`` as
 a title and shows the value of ``widget.info``, which we'll set in
@@ -234,7 +239,9 @@ too. Let's first make sure that Odoo can load our XML template. Open
 your ``__manifest.py__`` file and add in a new key ``qweb`` which
 loads our XML file:
 
+```
     'qweb': ['static/src/xml/hello_world.xml',],
+```
 
 This is enough for Odoo to know that it should load the XML as a
 template and that it should not be stored in the Odoo database. The last
@@ -243,10 +250,12 @@ should now be rendered with our template. Open up your
 ``hello_world.js`` file again and modify ``OurAction`` so that it loads
 the template:
 
+```
     const OurAction = AbstractAction.extend({
         template: "hello_world.ClientAction",
         info: "this message comes from the JS"
     });
+```
 
 After updating our module - since we've modified the manifest again -
 and after reloading the web browser you will see the result of your work
@@ -261,7 +270,9 @@ like JavaScript files it works pretty much the same as adding JS files.
 Create a new file named ``hello_world.css`` under ``static/src/css``
 and let's add in some basic CSS:
 
+```
     .hello-world {color: red;}
+```
 
 Now add this CSS file to the assets bundle so that Odoo knows that it
 needs to load our CSS. Open your ``assets.xml`` file again and add in
@@ -270,7 +281,7 @@ the CSS file with a link. Your assets file should now look like this:
 That's it! Update your module again and you'll see your client action
 is now styled. You should now see something like this as a result:
 
-![Result custom client action](./static/description/hello_world_odoo13.jpg)
+![Result custom client action](../static/description/hello_world_odoo13.jpg)
 
 8. Conclusion
 -------------
