@@ -96,6 +96,14 @@ it applied all xpath expressions - and then looks inside the xpath which
 files need to be processed. Notice that a bundle contains JavaScript,
 CSS and SCSS files. Your code would look like this:
 
+```
+<template id="assets_backend" name="hello_world assets" inherit_id="web.assets_backend">
+    <xpath expr="." position="inside">
+        <script type="text/javascript" src="/hello_world/static/src/js/hello_world.js"></script>
+    </xpath>
+</template>
+```
+
 **Tip**: don't forget to add this XML file to your ``__manifest.py__`` file!
 
 3. Creating our first JS module
@@ -151,11 +159,13 @@ modify our JS code:
 odoo.define('hello_world.main', function (require) {
     const AbstractAction = require('web.AbstractAction');
     const core = require('web.core');
+
     const OurAction = AbstractAction.extend({
         start: function () {
             this.$el.html('hello');
         }
     });
+
     core.action_registry.add('hello_world.action', OurAction);
 });
 ```
@@ -198,7 +208,15 @@ you don't have it yet and then create a new XML file named
 menuitem that calls our action. Your code should look like this:
 
 ```
-Tutorial Demo hello_world.action
+<odoo>                                
+  <data>                                    
+    <record id="action_hello_world" model="ir.actions.client">                                        
+      <field name="name">Tutorial Demo</field>                                        
+      <field name="tag">hello_world.action</field>                                    
+    </record>                                    
+    <menuitem name="Hello World" id="hello_world_menu_root" action="action_hello_world">                                </menuitem>
+  </data>                            
+</odoo>
 ```
 
 We also have to update our ``__manifest.py__`` file so that Odoo
@@ -230,7 +248,15 @@ and place it under ``/static/src/xml/``. Let's add a very basic XML
 template in it:
 
 ```
-Hello Odoo
+<!--?xml version="1.0" encoding="UTF-8"?-->                            
+<templates xml:space="preserve">    
+  <div t-name="hello_world.ClientAction" class="hello-world">      
+    <h1>Hello Odoo</h1>        
+    <div>
+      <t t-esc="widget.info"></t>
+    </div>    
+  </div>
+</templates>
 ```
 
 This code will just create an XML template which shows ``Hello Odoo`` as
@@ -282,6 +308,15 @@ the CSS file with a link. Your assets file should now look like this:
 
 That's it! Update your module again and you'll see your client action
 is now styled. You should now see something like this as a result:
+
+```
+<template id="assets_backend" name="hello_world assets" inherit_id="web.assets_backend">
+    <xpath expr="." position="inside">
+        <script type="text/javascript" src="/tutorial_manage_assets/static/src/js/hello_world.js"></script>
+        <link rel="stylesheet" type="text/css" href="/tutorial_manage_assets/static/src/css/hello_world.css">
+    </xpath>
+</template>
+```
 
 ![Result custom client action](../static/description/hello_world_odoo13.jpg)
 
