@@ -1,4 +1,5 @@
 odoo.define('hello_world.main', function (require) {
+    // console.log('hello javascript')
     const AbstractAction = require('web.AbstractAction');
     // console.log(AbstractAction);
     const core = require('web.core');
