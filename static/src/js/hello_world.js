@@ -8,7 +8,7 @@ odoo.define('hello_world.main', function (require) {
         //start: function () {
         //    this.$el.html('hello');
         //}
-        // Use "hello_world.ClientAction" template
+        // Use "hello_world.ClientAction" QWeb template
         template: "hello_world.ClientAction",
         info: "This message comes from the JS"
     });

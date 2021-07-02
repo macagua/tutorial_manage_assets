@@ -4,6 +4,6 @@ This module is part of [Creating and using JavaScript assets in Odoo 13](https:/
 
 ![Creating and using JavaScript assets in Odoo 13](./static/description/banner.jpg)
 
-## Hello World in Odoo 13
-![Hello World in Odoo 13](./static/description/hello_world_odoo13.jpg)
+## Screenshot Addon
+![Screenshot Addon](./static/description/screenshot.jpg "Screenshot Addon")
 
