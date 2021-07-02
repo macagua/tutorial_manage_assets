@@ -187,7 +187,7 @@ the point of view of the web client. There is still no way to open it
 from the user interface (see next chapter), but we can already test it
 manually, by running a command in the console:
 
-```ipython
+```python
 odoo.__DEBUG__.services["web.web_client"].do_action("hello_world.action")
 ```
 
@@ -269,7 +269,7 @@ too. Let's first make sure that Odoo can load our XML template. Open
 your ``__manifest.py__`` file and add in a new key ``qweb`` which
 loads our XML file:
 
-```
+```python
     'qweb': ['static/src/xml/hello_world.xml',],
 ```
 
@@ -280,7 +280,7 @@ should now be rendered with our template. Open up your
 ``hello_world.js`` file again and modify ``OurAction`` so that it loads
 the template:
 
-```
+```javascript
     const OurAction = AbstractAction.extend({
         template: "hello_world.ClientAction",
         info: "this message comes from the JS"
@@ -300,7 +300,7 @@ like JavaScript files it works pretty much the same as adding JS files.
 Create a new file named ``hello_world.css`` under ``static/src/css``
 and let's add in some basic CSS:
 
-```
+```css
     .hello-world {color: red;}
 ```
 
@@ -311,7 +311,7 @@ the CSS file with a link. Your assets file should now look like this:
 That's it! Update your module again and you'll see your client action
 is now styled. You should now see something like this as a result:
 
-```
+```xml
 <template id="assets_backend" name="hello_world assets" inherit_id="web.assets_backend">
     <xpath expr="." position="inside">
         <script type="text/javascript" src="/tutorial_manage_assets/static/src/js/hello_world.js"></script>
