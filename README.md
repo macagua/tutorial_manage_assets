@@ -4,6 +4,10 @@ This module is part of [Creating and using JavaScript assets in Odoo 13](https:/
 
 ![Creating and using JavaScript assets in Odoo 13](./static/description/banner.jpg)
 
+## Tested
+
+- Odoo 13 CE version.
+
 ## Screenshot Addon
 ![Screenshot Addon](./static/description/screenshot.jpg "Screenshot Addon")
 
